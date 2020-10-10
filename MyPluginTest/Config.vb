@@ -51,14 +51,19 @@ Module Config
         Marshal.FreeHGlobal(PtrBuffer)
         KeyNames = New Collection
         KeyContent = ""
-        For I = 0 To ReturnValue - 1
-            If AllKeyName.Chars(I) = vbNullChar Then
-                KeyNames.Add(KeyContent)
-                KeyContent = ""
-            Else
-                KeyContent = KeyContent & AllKeyName.Chars(I)
-            End If
-        Next
+        Try
+            For I = 0 To ReturnValue - 1
+                If AllKeyName.Chars(I) = vbNullChar Then
+                    KeyNames.Add(KeyContent)
+                    KeyContent = ""
+                Else
+                    KeyContent = KeyContent & AllKeyName.Chars(I)
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+
         GetSectionKeyNames = KeyNames
         KeyNames = Nothing
     End Function

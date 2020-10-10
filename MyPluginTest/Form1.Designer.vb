@@ -28,6 +28,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -55,11 +56,21 @@ Partial Class Form1
         Me.Button1.Text = "设置"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(37, 58)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(407, 21)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "将GetIP.php和DelIP.php放到网站的某一目录,设置好访问目录即可. "
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(480, 75)
+        Me.ClientSize = New System.Drawing.Size(480, 88)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
@@ -76,4 +87,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents TextBox1 As Windows.Forms.TextBox
     Friend WithEvents Button1 As Windows.Forms.Button
+    Friend WithEvents Label2 As Windows.Forms.Label
 End Class
