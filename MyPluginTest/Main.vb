@@ -32,12 +32,12 @@ Module Main
         If sMsg.SenderQQ <> sMsg.ThisQQ Then
             If sMsg.MessageContent = "谁在窥屏" Then
 
-                If File.Exists(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini") Then
-                    Dim Sections = GetAllSections(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+                If File.Exists(IniFilePath) Then
+                    Dim Sections = GetAllSections(IniFilePath)
                     If Sections.Count = 0 Then Return 1
                     For Each Section In Sections
                         If Section = "WebAddress" Then
-                            Dim KeysList = GetSectionKeyNames(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini", Section)
+                            Dim KeysList = GetSectionKeyNames(IniFilePath, Section)
                             For Each Key In KeysList
                                 If Key.ToString.StartsWith("url=") Then
                                     url = Key.ToString.Replace("url=", "")

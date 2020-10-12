@@ -9,6 +9,7 @@ Public Module Pinvoke
     Public PluginStatus As Boolean
     Public RobotQQ As String
     Public url As String = ""
+    Public IniFilePath = Environment.CurrentDirectory + "\main\data\config\WrapIP.ini"
 #End Region
 
 

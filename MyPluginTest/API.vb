@@ -155,10 +155,10 @@ Public Class API
                 RobotQQ = EvenType.ThisQQ
                 If Not System.IO.Directory.Exists(Environment.CurrentDirectory + "\main\data\config\") Then
                     System.IO.Directory.CreateDirectory(Environment.CurrentDirectory + "\main\data\config\")
-                    WritePrivateProfileString("WebAddress", "url", "http://XXX.com:90/GetIP/" + vbNewLine, Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+                    WritePrivateProfileString("WebAddress", "url", "http://XXX.com:90/GetIP/" + vbNewLine, IniFilePath)
                 Else
-                    If Not File.Exists(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini") Then
-                        WritePrivateProfileString("WebAddress", "url", "http://XXX.com:90/GetIP/" + vbNewLine, Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+                    If Not File.Exists(IniFilePath) Then
+                        WritePrivateProfileString("WebAddress", "url", "http://XXX.com:90/GetIP/" + vbNewLine, IniFilePath)
                     End If
                 End If
                     Case EventTypeEnum.Friend_NewFriend

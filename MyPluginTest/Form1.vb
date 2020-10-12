@@ -8,12 +8,12 @@ Public Class Form1
     Friend Shared MyInstance As Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MyInstance = Me
-        If File.Exists(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini") Then
-            Dim Sections = GetAllSections(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+        If File.Exists(IniFilePath) Then
+            Dim Sections = GetAllSections(IniFilePath)
             If Sections.Count = 0 Then Return
             For Each Section In Sections
                 If Section = "WebAddress" Then
-                    Dim KeysList = GetSectionKeyNames(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini", Section)
+                    Dim KeysList = GetSectionKeyNames(IniFilePath, Section)
                     For Each Key In KeysList
                         If Key.ToString.StartsWith("url=") Then
                             TextBox1.Text = Key.ToString.Replace("url=", "")
@@ -29,19 +29,19 @@ Public Class Form1
         Dim path = Environment.CurrentDirectory & "\main\data\config\WrapIP.ini"
         If Not System.IO.Directory.Exists(Environment.CurrentDirectory + "\main\data\config\") Then
             System.IO.Directory.CreateDirectory(Environment.CurrentDirectory + "\main\data\config\")
-            WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+            WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, IniFilePath)
         Else
-            If Not File.Exists(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini") Then
-                WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+            If Not File.Exists(IniFilePath) Then
+                WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, IniFilePath)
             Else
-                Dim Sections = GetAllSections(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+                Dim Sections = GetAllSections(IniFilePath)
                 If Sections.Count = 0 Then
-                    WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
+                    WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, IniFilePath)
                 Else
                     For Each Section In Sections
                         If Section = "WebAddress" Then
                             If TextBox1.Text.Substring(TextBox1.Text.Length - 1) <> "/" Then TextBox1.Text = TextBox1.Text + "/"
-                            SetSection(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini", "WebAddress", "url=" + TextBox1.Text + vbNewLine)
+                            SetSection(IniFilePath, "WebAddress", "url=" + TextBox1.Text + vbNewLine)
                             MessageBox.Show("设置成功.")
                             Exit For
                         End If
