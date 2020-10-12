@@ -8,7 +8,7 @@ Public Module Pinvoke
     Public jsonstr, plugin_key As String
     Public PluginStatus As Boolean
     Public RobotQQ As String
-
+    Public url As String = ""
 #End Region
 
 

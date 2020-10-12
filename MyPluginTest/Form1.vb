@@ -50,5 +50,6 @@ Public Class Form1
 
             End If
         End If
+        url = TextBox1.Text
     End Sub
 End Class

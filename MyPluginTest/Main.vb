@@ -31,7 +31,7 @@ Module Main
 
         If sMsg.SenderQQ <> sMsg.ThisQQ Then
             If sMsg.MessageContent = "谁在窥屏" Then
-                Dim url As String = ""
+
                 If File.Exists(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini") Then
                     Dim Sections = GetAllSections(Environment.CurrentDirectory + "\main\data\config\WrapIP.ini")
                     If Sections.Count = 0 Then Return 1
