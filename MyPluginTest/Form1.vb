@@ -35,19 +35,14 @@ Public Class Form1
                 WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, IniFilePath)
             Else
                 Dim Sections = GetAllSections(IniFilePath)
-                If Sections.Count = 0 Then
-                    WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, IniFilePath)
-                Else
-                    For Each Section In Sections
-                        If Section = "WebAddress" Then
-                            If TextBox1.Text.Substring(TextBox1.Text.Length - 1) <> "/" Then TextBox1.Text = TextBox1.Text + "/"
-                            SetSection(IniFilePath, "WebAddress", "url=" + TextBox1.Text + vbNewLine)
-                            MessageBox.Show("设置成功.")
-                            Exit For
-                        End If
-                    Next
-                End If
-
+                For Each Section In Sections
+                    If Section = "WebAddress" Then
+                        If TextBox1.Text.Substring(TextBox1.Text.Length - 1) <> "/" Then TextBox1.Text = TextBox1.Text + "/"
+                        WritePrivateProfileString("WebAddress", "url", TextBox1.Text + vbNewLine, IniFilePath)
+                        MessageBox.Show("设置成功.")
+                        Exit For
+                    End If
+                Next
             End If
         End If
         url = TextBox1.Text
