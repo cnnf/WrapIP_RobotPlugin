@@ -9,8 +9,6 @@ Imports System.Windows.Forms
 
 Module Main
 
-    Public cts As New CancellationTokenSource()
-    Public runing As Boolean = False
 #Region "收到私聊消息"
     Public funRecvicePrivateMsg As RecvicePrivateMsg = New RecvicePrivateMsg(AddressOf RecvicetPrivateMessage)
     <UnmanagedFunctionPointer(CallingConvention.StdCall)>
