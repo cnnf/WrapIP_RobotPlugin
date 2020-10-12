@@ -60,7 +60,7 @@ Module Main
                 End If
             End If
         End If
-        Return 1
+        Return 0
     End Function
 #End Region
 
