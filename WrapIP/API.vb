@@ -2,12 +2,8 @@
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Runtime.InteropServices
-Imports System.Text
-Imports System.Text.RegularExpressions
-Imports System.Threading
 Imports System.Web.Script.Serialization
 Imports System.Windows.Forms
-Imports RGiesecke.DllExport
 
 Public Class API
 
@@ -161,7 +157,7 @@ Public Class API
                         WritePrivateProfileString("WebAddress", "url", "http://XXX.com:90/GetIP/" + vbNewLine, IniFilePath)
                     End If
                 End If
-                    Case EventTypeEnum.Friend_NewFriend
+            Case EventTypeEnum.Friend_NewFriend
                 Console.WriteLine("有新好友")
             Case EventTypeEnum.Friend_FriendRequest
                 Console.WriteLine("好友请求")

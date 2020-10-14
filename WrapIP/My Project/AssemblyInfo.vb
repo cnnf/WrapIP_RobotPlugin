@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("MyPluginTest")>
+<Assembly: AssemblyTitle("WrapIP")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("MyPluginTest")>
+<Assembly: AssemblyProduct("WrapIP")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 '如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-<Assembly: Guid("ea099608-5b53-4943-be2c-7bdd555fdc4c")>
+<Assembly: Guid("9e1bd6bb-cc07-4e5d-92ef-e0be7b37e035")>
 
 ' 程序集的版本信息由下列四个值组成: 
 '
