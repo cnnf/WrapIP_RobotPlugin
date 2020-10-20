@@ -53,7 +53,7 @@ Module Main
                     'Dim jsonstring2 As String = "{""app"":""com.tencent.miniapp_01"",""desc"":"""",""view"":""notification"",""ver"":""1.0.0.11"",""prompt"":""【个人介绍】"",""appID"":"""",""sourceName"":"""",""actionData"":"""",""actionData_A"":"""",""sourceUrl"":"""",""meta"":{""notification"":{""appInfo"":{""appName"":""查询窥屏IP"",""appType"":4,""appid"":2307907357,""iconUrl"":""" + urli + """},""button"":[{""action"":""" + urli + """,""name"":""进入小程序查看详情""},{""action"":"""",""name"":"" TG""}],""data"":[{""title"":""提示"",""value"":""正在收集10秒内信息...""}],""emphasis_keyword"":"""",""title"":""谁在窥屏""}}} "   'http:\/\/q1.qlogo.cn\/g?b=qq&nk=1691323137&s=100
                     'API.SendGroupJSONMessage(Pinvoke.plugin_key, sMsg.ThisQQ, sMsg.MessageGroupQQ, jsonstring2, False)
                     Dim urli = url + "GetIP.php?username=" & CLng(DateTime.UtcNow.Subtract(New DateTime(1970, 1, 1)).TotalMilliseconds) & "_" & sMsg.SenderQQ.ToString & "&url=q.qlogo.cn/headimg_dl?dst_uin=" & sMsg.SenderQQ.ToString & "&spec=100"
-                    API.ShareMusic(Pinvoke.plugin_key, sMsg.ThisQQ, sMsg.MessageGroupQQ, "谁在窥屏", "正在收集10秒内数据...", "http://q.qlogo.cn/headimg_dl?dst_uin=" & sMsg.ThisQQ.ToString & "&spec=100", urli, urli, 0, 1)
+                    API.ShareMusic(Pinvoke.plugin_key, sMsg.ThisQQ, sMsg.MessageGroupQQ, "谁在窥屏", "正在收集10秒内数据...", "http://q.qlogo.cn/headimg_dl?dst_uin=" & sMsg.ThisQQ.ToString & "&spec=100", urli, urli, MusicAppTypeEnum.WangYiMusic, MusicShare_Type.GroupMsg)
                     System.Threading.Thread.Sleep(10000)
                     GetQQIP(sMsg.ThisQQ, sMsg.MessageGroupQQ, url)
                 End If
