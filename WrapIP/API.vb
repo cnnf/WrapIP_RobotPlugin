@@ -106,21 +106,21 @@ Public Class API
         Try
             Dim root = New JavaScriptSerializer().Deserialize(Of Dictionary(Of String, Dictionary(Of String, Object)))(RetJson)
             Dim QQlist = root(root.Keys(0))
-            For i = 0 To root.Count
-                If QQlist.Keys(i) = "111111111" Then   '控制插件被滥用,如果不是该QQ号码登录就禁用发送信息功能
-                    RobotQQ = QQlist.Keys(i)
-                    PluginStatus = True
-                    Return RetJson
-                ElseIf QQlist.Keys(i) <> "22222222" Then
-                    RobotQQ = QQlist.Keys(i)
-                    PluginStatus = True
-                    Return RetJson
-                ElseIf QQlist.Keys(i) <> "3333333" Then
-                    RobotQQ = QQlist.Keys(i)
-                    PluginStatus = True
-                    Return RetJson
-                End If
-            Next
+            'For i = 0 To root.Count
+            '    If QQlist.Keys(i) = "111111111" Then   '控制插件被滥用,如果不是该QQ号码登录就禁用发送信息功能
+            '        RobotQQ = QQlist.Keys(i)
+            '        PluginStatus = True
+            '        Return RetJson
+            '    ElseIf QQlist.Keys(i) <> "22222222" Then
+            '        RobotQQ = QQlist.Keys(i)
+            '        PluginStatus = True
+            '        Return RetJson
+            '    ElseIf QQlist.Keys(i) <> "3333333" Then
+            '        RobotQQ = QQlist.Keys(i)
+            '        PluginStatus = True
+            '        Return RetJson
+            '    End If
+            'Next
         Catch ex As Exception
 
         End Try
@@ -148,7 +148,7 @@ Public Class API
         Select Case EvenType.EventType
             Case EventTypeEnum.This_SignInSuccess
                 Console.WriteLine("登录成功")
-                RobotQQ = EvenType.ThisQQ
+                'RobotQQ = EvenType.ThisQQ
                 If Not System.IO.Directory.Exists(Environment.CurrentDirectory + "\main\data\config\") Then
                     System.IO.Directory.CreateDirectory(Environment.CurrentDirectory + "\main\data\config\")
                     WritePrivateProfileString("WebAddress", "url", "http://XXX.com:90/GetIP/" + vbNewLine, IniFilePath)
